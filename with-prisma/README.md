@@ -3,7 +3,7 @@ docker-compose up
 ```
 
 ```
-mv .env.example .env
+cp .env.example .env 
 ```
 
 ```
