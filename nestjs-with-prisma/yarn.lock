@@ -849,10 +849,10 @@
   dependencies:
     chalk "^4.0.0"
 
-"@quramy/jest-prisma@^1.7.2":
+"@quramy/jest-prisma-node@^1.7.2":
   version "1.7.2"
-  resolved "https://registry.yarnpkg.com/@quramy/jest-prisma/-/jest-prisma-1.7.2.tgz#97447aa2aa4a7a97d24061a58fe16af228e6c0ce"
-  integrity sha512-qgonanQPmQ+KfJ1x54pdUfoMut6/ONF6dNBe1AxeVoUzVU6k0OrBNRksFgE806Hk3GkEbwUnd44wm+MSF4E+hA==
+  resolved "https://registry.yarnpkg.com/@quramy/jest-prisma-node/-/jest-prisma-node-1.7.2.tgz#1a85f4d713ad0e35dfe7ca65881dd27d9dc52ce0"
+  integrity sha512-8KF7dszSx2VUstkxn28duybuIt4F/84WV93z+ioD8LC4YJQ+IiRGNwDp0FFuLH83Qc0o48CmPyNqq+Uqv49v1A==
   dependencies:
     "@quramy/jest-prisma-core" "^1.7.0"
 
