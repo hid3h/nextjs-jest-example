@@ -842,6 +842,20 @@
   dependencies:
     "@prisma/debug" "5.7.1"
 
+"@quramy/jest-prisma-core@^1.7.0":
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/@quramy/jest-prisma-core/-/jest-prisma-core-1.7.2.tgz#b2601e09547a4c57e2b7aac072777db7a1e81fde"
+  integrity sha512-sv8mmW+piefNJRrc23UagWEbQULcMK8LiPDggZ90QdNNuEN89D3Q4vY6f/6Qw+VxPAzFkojhnH2VkQt6556shg==
+  dependencies:
+    chalk "^4.0.0"
+
+"@quramy/jest-prisma@^1.7.2":
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/@quramy/jest-prisma/-/jest-prisma-1.7.2.tgz#97447aa2aa4a7a97d24061a58fe16af228e6c0ce"
+  integrity sha512-qgonanQPmQ+KfJ1x54pdUfoMut6/ONF6dNBe1AxeVoUzVU6k0OrBNRksFgE806Hk3GkEbwUnd44wm+MSF4E+hA==
+  dependencies:
+    "@quramy/jest-prisma-core" "^1.7.0"
+
 "@sinclair/typebox@^0.27.8":
   version "0.27.8"
   resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.27.8.tgz#6667fac16c436b5434a387a34dedb013198f6e6e"
