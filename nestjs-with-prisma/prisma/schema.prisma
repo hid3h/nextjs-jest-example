@@ -9,3 +9,9 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model InvoiceIssuance {
+  id String @id @default(cuid())
+  amount Int
+  issuedAt DateTime
+}
