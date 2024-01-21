@@ -1,9 +1,9 @@
 import prisma from "../../db";
-import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
+import { Prisma } from "@prisma/client";
 
 export const issueInvoice = async ({ amount }: { amount: number }) => {
   try {
-    // throw new PrismaClientKnownRequestError("two", {
+    // throw new Prisma.PrismaClientKnownRequestError("two", {
     //   code: "P1",
     //   clientVersion: "0.0.0",
     //   batchRequestIdx: 1,
@@ -27,16 +27,11 @@ export const issueInvoice = async ({ amount }: { amount: number }) => {
 
     console.log("Object.getPrototypeOf(e)", Object.getPrototypeOf(e));
     console.log(
-      "PrismaClientKnownRequestError.prototype;",
-      PrismaClientKnownRequestError.prototype
+      "Prisma.PrismaClientKnownRequestError.prototype;",
+      Prisma.PrismaClientKnownRequestError.prototype
     );
 
-    console.log(
-      "===",
-      Object.getPrototypeOf(e) === PrismaClientKnownRequestError.prototype
-    );
-
-    if (e instanceof PrismaClientKnownRequestError) {
+    if (e instanceof Prisma.PrismaClientKnownRequestError) {
       console.log("入りました", e.code);
       console.log(e.meta);
     } else {
