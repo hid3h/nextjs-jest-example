@@ -9,9 +9,9 @@ const createJestConfig = nextJest({
 // Add any custom config to be passed to Jest
 const config: Config = {
   preset: 'ts-jest',
-  testEnvironment: "@quramy/jest-prisma-node/environment",
+  // testEnvironment: "@quramy/jest-prisma-node/environment",
   // Add more setup options before each test is run
-  setupFilesAfterEnv: ["<rootDir>/setup-prisma.js"],
+  // setupFilesAfterEnv: ["<rootDir>/setup-prisma.js"],
 }
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
