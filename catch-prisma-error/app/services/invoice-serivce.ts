@@ -20,7 +20,6 @@ export const issueInvoice = async ({ amount }: { amount: number }) => {
     // });
     const invoice = await prisma.invoiceIssuance.create({
       data: {
-        id: "1",
         amount,
         issuedAt: new Date(),
       },
@@ -28,39 +27,18 @@ export const issueInvoice = async ({ amount }: { amount: number }) => {
 
     await prisma.invoiceIssuance.create({
       data: {
-        id: "1",
+        id: invoice.id,
         amount,
         issuedAt: new Date(),
       },
     });
   } catch (e) {
-    console.log(e);
-    console.log(
-      "e instanceof Prisma.PrismaClientKnownRequestError",
-      PrismaClientKnownRequestError
-    );
-    console.log(
-      "PrismaClientKnownRequestError.prototype",
-      PrismaClientKnownRequestError.prototype
-    );
-
-    if (e instanceof HogeError) {
-      console.log("HogeError", e.fuga);
-    }
-
+    console.log("e", e);
     if (e instanceof PrismaClientKnownRequestError) {
-      console.log("入ってますか？", e.code);
+      console.log("入りました", e.code);
       console.log(e.meta);
+    } else {
+      console.log("入っていません");
     }
   }
-  // return invoice;
-};
-
-export const fetchLatestInvoice = async () => {
-  const invoice = await prisma.invoiceIssuance.findFirst({
-    orderBy: {
-      issuedAt: "desc",
-    },
-  });
-  return invoice;
 };
