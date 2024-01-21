@@ -1,16 +1,6 @@
 import prisma from "../../db";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 
-export declare class HogeErrorType {
-  fuga: string;
-}
-
-class HogeError extends Error implements HogeErrorType {
-  constructor(public fuga: string) {
-    super();
-  }
-}
-
 export const issueInvoice = async ({ amount }: { amount: number }) => {
   try {
     // throw new PrismaClientKnownRequestError("two", {
