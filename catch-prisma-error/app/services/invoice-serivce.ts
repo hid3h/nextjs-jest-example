@@ -1,5 +1,6 @@
 import prisma from "../../db";
 import { Prisma } from "@prisma/client";
+import JestPrisma from "@quramy/jest-prisma-node"
 
 export const issueInvoice = async ({ amount }: { amount: number }) => {
   try {
@@ -29,6 +30,11 @@ export const issueInvoice = async ({ amount }: { amount: number }) => {
     console.log(
       "Prisma.PrismaClientKnownRequestError.prototype;",
       Prisma.PrismaClientKnownRequestError.prototype
+    );
+
+    console.log(
+      "===",
+      Object.getPrototypeOf(e) === Prisma.PrismaClientKnownRequestError.prototype
     );
 
     if (e instanceof Prisma.PrismaClientKnownRequestError) {
