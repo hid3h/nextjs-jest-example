@@ -24,6 +24,18 @@ export const issueInvoice = async ({ amount }: { amount: number }) => {
     });
   } catch (e) {
     console.log("e", e);
+
+    console.log("Object.getPrototypeOf(e)", Object.getPrototypeOf(e));
+    console.log(
+      "PrismaClientKnownRequestError.prototype;",
+      PrismaClientKnownRequestError.prototype
+    );
+
+    console.log(
+      "===",
+      Object.getPrototypeOf(e) === PrismaClientKnownRequestError.prototype
+    );
+
     if (e instanceof PrismaClientKnownRequestError) {
       console.log("入りました", e.code);
       console.log(e.meta);
