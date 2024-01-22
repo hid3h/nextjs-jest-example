@@ -1,4 +1,4 @@
-import { hoge } from "./hoge";
+import { hoge } from "./hoge-model";
 
 // hogeから取得したデータを返す
 export const exampleService = () => {
