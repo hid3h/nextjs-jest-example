@@ -1,58 +1,39 @@
-import * as hogeModel from "../app/hoge-model";
-import { exampleService } from "../app/example-serivce";
+import * as sendEmailLib from "../app/lib/send-email";
+import { sendEmail } from "../app/example-serivce";
 
-describe("mock test1", () => {
-  test("spyOnでhoge()のreturnを置き換える", () => {
-    const hogeSpy = jest.spyOn(hogeModel, "hoge").mockReturnValue({
-      message: "mockedあいうえお",
-    });
-    const reslut = exampleService();
-    expect(reslut).toEqual({
-      message: "mockedあいうえお",
-    });
-    expect(hogeSpy).toHaveBeenCalled();
-    expect(hogeSpy.mock.calls).toEqual([[]]);
-    expect(hogeSpy.mock.instances).toEqual([undefined]);
-    expect(hogeSpy.mock.results).toEqual([
-      {
-        type: "return",
-        value: {
-          message: "mockedあいうえお",
-        },
-      },
-    ]);
-  });
-
-  test("spyOnしたreturnはリセットされているのか？", () => {
-    const reslut = exampleService();
-    expect(reslut).toEqual({
-      message: "mockedあいうえお",
-    });
-    // ↑成功するのでリセットされていないことが確認できる
-  });
-});
-
-
-describe("mock test2", () => {
+describe("email送信", () => {
   afterEach(() => {
-    jest.clearAllMocks();
+    jest.restoreAllMocks();
   });
 
-  test("spyOnでhoge()のreturnを置き換える", () => {
-    jest.spyOn(hogeModel, "hoge").mockReturnValue({
-      message: "mockedあいうえお",
-    });
-    const reslut = exampleService();
-    expect(reslut).toEqual({
-      message: "mockedあいうえお",
+  test("emailが送信される", () => {
+    // const sendSpy = jest.spyOn(sendEmailLib, "send")のみだと、
+    // send()の中身が実行されてしまいます
+    const sendSpy = jest
+      .spyOn(sendEmailLib, "send")
+      .mockResolvedValue();
+
+    sendEmail({ emailAddress: "test@example.com" });
+
+    expect(sendSpy).toHaveBeenCalledWith({
+      emailAddress: "test@example.com",
+      body: "あいうえお",
     });
   });
 
-  test("spyOnしたreturnはリセットされているのか？", () => {
-    const reslut = exampleService();
-    expect(reslut).toEqual({
-      message: "mockedあいうえお",
+  test("emailが送信されるmock", () => {
+    const sendSpy = jest.mock("../app/lib/send-email", () => {
+      return {
+        __esModule: true,
+        send: jest.fn(),
+      };
     });
-    // ↑成功するのでリセットされていないことが確認できる
+
+    sendEmail({ emailAddress: "test@example.com" });
+
+    expect(sendEmailLib.send).toHaveBeenCalledWith({
+      emailAddress: "test@example.com",
+      body: "あいうえお",
+    });
   });
 });

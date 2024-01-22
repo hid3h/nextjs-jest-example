@@ -1,7 +1,6 @@
-import { hoge } from "./hoge-model";
+import { send } from "./lib/send-email";
 
-// hogeから取得したデータを返す
-export const exampleService = () => {
-  const response = hoge();
-  return response;
+export const sendEmail = async ({ emailAddress }: { emailAddress: string }) => {
+  const body = "あいうえお";
+  await send({ emailAddress, body });
 };
