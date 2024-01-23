@@ -1,10 +1,23 @@
+import { MailService } from "@sendgrid/mail";
+
 export const send = async ({
-  emailAddress,
-  body,
+  to,
+  from,
+  subject,
+  text,
 }: {
-  emailAddress: string;
-  body: string;
+  to: string;
+  from: string;
+  subject: string;
+  text: string;
 }) => {
-  // 外部リクエストが発生する処理
-  console.log("外部リクエスト処理が走りました");
+  const mailService = new MailService();
+  mailService.setApiKey("SG.example");
+  const msg = {
+    to,
+    from,
+    subject,
+    text,
+  };
+  await mailService.send(msg);
 };
