@@ -4,11 +4,6 @@ import JestPrisma from "@quramy/jest-prisma-node"
 
 export const issueInvoice = async ({ amount }: { amount: number }) => {
   try {
-    // throw new Prisma.PrismaClientKnownRequestError("two", {
-    //   code: "P1",
-    //   clientVersion: "0.0.0",
-    //   batchRequestIdx: 1,
-    // });
     const invoice = await prisma.invoiceIssuance.create({
       data: {
         amount,
@@ -16,6 +11,7 @@ export const issueInvoice = async ({ amount }: { amount: number }) => {
       },
     });
 
+    // ここでid重複によるエラーが発生させる
     await prisma.invoiceIssuance.create({
       data: {
         id: invoice.id,
@@ -25,7 +21,6 @@ export const issueInvoice = async ({ amount }: { amount: number }) => {
     });
   } catch (e) {
     console.log("e", e);
-
     console.log("Object.getPrototypeOf(e)", Object.getPrototypeOf(e));
     console.log(
       "Prisma.PrismaClientKnownRequestError.prototype;",
